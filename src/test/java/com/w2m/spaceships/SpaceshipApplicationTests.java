@@ -1,10 +1,10 @@
-package com.w2m.naves;
+package com.w2m.spaceships;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NavesApplicationTests {
+class SpaceshipApplicationTests {
 
 	@Test
 	void contextLoads() {
