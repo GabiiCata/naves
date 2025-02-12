@@ -3,3 +3,11 @@ spring:
     name : Naves
   liquibase:
     enabled: false
+springdoc:
+  api-docs:
+    title: API de Naves Espaciales
+    description: API RESTful para el mantenimiento CRUD de naves espaciales de series y películas
+    version: OPENAPI_3_0
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html

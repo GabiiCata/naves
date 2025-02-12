@@ -2,7 +2,6 @@ package com.w2m.spaceships.spaceship.infraestructure;
 
 import com.w2m.spaceships.spaceship.application.SpaceshipService;
 import com.w2m.spaceships.spaceship.domain.EOrigin;
-import com.w2m.spaceships.spaceship.domain.Spaceship;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,34 +17,34 @@ public class SpaceshipController {
     private final SpaceshipService spaceshipService;
 
     @GetMapping
-    public Page<Spaceship> getAllSpaceships(Pageable pageable) {
+    public Page<SpaceshipDTO> getAllSpaceships(Pageable pageable) {
         return spaceshipService.getAllSpaceships(pageable);
     }
 
     @GetMapping("/{id}")
-    public Spaceship getSpaceshipById(@PathVariable Long id) {
+    public SpaceshipDTO getSpaceshipById(@PathVariable Long id) {
         return spaceshipService.getSpaceshipById(id)
                 .orElseThrow(() -> new RuntimeException("Nave no encontrada con ID: " + id));
     }
 
     @GetMapping("/search")
-    public List<Spaceship> searchSpaceshipsByName(@RequestParam String name) {
+    public List<SpaceshipDTO> searchSpaceshipsByName(@RequestParam String name) {
         return spaceshipService.searchSpaceshipsByName(name);
     }
 
     @GetMapping("/origin/{origin}")
-    public List<Spaceship> getSpaceshipByOrigin(@PathVariable EOrigin origin) {
+    public List<SpaceshipDTO> getSpaceshipByOrigin(@PathVariable EOrigin origin) {
         return spaceshipService.getSpaceshipsByOrigin(origin);
     }
 
     @PostMapping
-    public Spaceship createSpaceship(@RequestBody Spaceship nave) {
-        return spaceshipService.createSpaceship(nave);
+    public SpaceshipDTO createSpaceship(@RequestBody SpaceshipDTO spaceship) {
+        return spaceshipService.createSpaceship(spaceship);
     }
 
     @PutMapping("/{id}")
-    public Spaceship updateSpaceship(@PathVariable Long id, @RequestBody Spaceship naveDetails) {
-        return spaceshipService.updateSpaceship(id, naveDetails);
+    public SpaceshipDTO updateSpaceship(@PathVariable Long id, @RequestBody SpaceshipDTO spaceship) {
+        return spaceshipService.updateSpaceship(id, spaceship);
     }
 
     @DeleteMapping("/{id}")
