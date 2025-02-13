@@ -1,5 +1,6 @@
 package com.w2m.naves.spaceship.application;
 
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.w2m.naves.spaceship.domain.EOrigin;
 import com.w2m.naves.spaceship.domain.Spaceship;
 import com.w2m.naves.spaceship.infraestructure.repository.SpaceshipRepository;
@@ -49,9 +50,12 @@ public class SpaceshipService {
 
     public SpaceshipDTO updateSpaceship(Long id, SpaceshipDTO spaceshipDetails) {
         return spaceshipRepository.findById(id).map(spaceship -> {
-            spaceship.setName(spaceshipDetails.getName());
-            spaceship.setDescription(spaceshipDetails.getDescription());
-
+            if ( spaceshipDetails.getName()!= null)
+                spaceship.setName(spaceshipDetails.getName());
+            if ( spaceshipDetails.getDescription() !=  null )
+                spaceship.setDescription(spaceshipDetails.getDescription());
+            if (spaceshipDetails.getOrigin() != null)
+                spaceship.setOrigin(spaceshipDetails.getOrigin());
             Spaceship updatedSpaceship = spaceshipRepository.saveAndFlush(spaceship);
             return modelMapper.map(updatedSpaceship, SpaceshipDTO.class);
         }).orElseThrow(() -> new RuntimeException("Nave no encontrada con ID: " + id));

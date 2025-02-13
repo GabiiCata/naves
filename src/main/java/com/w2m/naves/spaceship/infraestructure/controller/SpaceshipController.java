@@ -3,12 +3,11 @@ package com.w2m.naves.spaceship.infraestructure.controller;
 import com.w2m.naves.spaceship.application.SpaceshipDTO;
 import com.w2m.naves.spaceship.application.SpaceshipService;
 import com.w2m.naves.spaceship.domain.EOrigin;
+import com.w2m.naves.spaceship.infraestructure.exception.SpaceshipNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class SpaceshipController implements ISpaceshipController {
     @GetMapping("/{id}")
     public SpaceshipDTO getSpaceshipById( @PathVariable Long id) {
         return spaceshipService.getSpaceshipById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Nave no encontrada con ID: " + id));
+                .orElseThrow(() -> new SpaceshipNotFoundException(id));
     }
 
     @GetMapping("/search")
