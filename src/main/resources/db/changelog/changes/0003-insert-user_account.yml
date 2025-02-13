@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 2
-      author: w2m
+      author: Gabriel Espina
       changes:
         - insert:
             tableName: user_account
