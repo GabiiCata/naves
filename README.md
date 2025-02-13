@@ -63,6 +63,15 @@ Para ejecutar este proyecto, necesitarás lo siguiente:
 
 ## **Correr la app 🚀**
 
+### Descarga el repositorio
+```bash
+git clone https://github.com/GabiiCata/naves.git
+```
+### Ubicate dentro del proyecto
+```bash
+cd naves
+```
+
 ### Inicia la app en docker: 
 
 ```bash
@@ -74,7 +83,6 @@ docker-compose up --build
 ```bash
 http://localhost:8080/swagger-ui/index.html
 ```
-
 
 ### Tienes acceso a H2 Console
 
