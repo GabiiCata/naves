@@ -25,3 +25,5 @@ logging:
   level:
     root: INFO
     com.w2m.spaceships.aspect: WARN
+main:
+  allow-circular-references: true
