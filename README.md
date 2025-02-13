@@ -4,24 +4,52 @@
 
 # Prueba Técnica Backend - W2M
 
-## 
-
 Este proyecto es una API RESTful desarrollada en **Spring Boot** que permite realizar un mantenimiento CRUD de naves espaciales de series y películas. La aplicación cumple con los requisitos del challenge técnico proporcionado por W2M.
 
+## Índice 📌
+1. [Puntos que se validan para el test 🏆](#puntos-que-se-validan-para-el-test-)
+    - [Alcance del proyecto 📃](#alcance-del-proyecto)
+    - [Puntos a tener en cuenta 🖋️](#puntos-a-tener-en-cuenta-)
+2. [Requisitos 👷‍♂️](#requisitos-)
+3. [Correr la app 🚀](#correr-la-app-)
+    - [Inicia la app en Docker](#inicia-la-app-en-docker-)
+    - [Puedes visualizar los endpoints en Swagger](#puedes-visualizar-los-endpoints-en-swagger)
+    - [Tienes acceso a H2 Console](#tienes-acceso-a-h2-console)
+4. [Login para usar los endpoints 🔒](#login-para-usar-los-endpoints-)
+5. [PLUS 🍷](#plus-)
+6. [Tecnologías Utilizadas 🛠️](#tecnologías-utilizadas-)
 
-## **Descripción del Proyecto 📃**
 
-La API permite gestionar un catálogo de naves espaciales de series y películas. Las funcionalidades incluyen:
+## Puntos que se validan para el test 🏆
+> Los puntos en ✅ son los que la app cumple
 
-- Consultar todas las naves con paginación.
-- Consultar una nave por su ID.
-- Filtrar naves por nombre.
-- Crear, actualizar y eliminar naves.
-- Gestión centralizada de excepciones.
-- Logs personalizados con `@Aspect`.
-- Documentación de la API con Swagger.
-- Dockerización de la aplicación.
+> Los puntos en ✖️ so los que la app no cumple
 
+### **Alcance del proyecto📃**
+
+- Consultar todas las naves utilizando paginación. ✅
+- Consultar una única nave por id. ✅
+- Consultar todas las naves que contienen, en su nombre, el valor de un parámetro enviado en la petición. Por ejemplo, si enviamos “wing” devolverá “x-wing”. ✅
+- Crear una nueva nave. ✅
+- Modificar una nave. ✅
+- Eliminar una nave. ✅
+- Test unitario de como mínimo de una clase. ✖️
+- Desarrollar un @Aspect que añada una línea de log cuando nos piden una nave con un id negativo. ✅
+- Gestión centralizada de excepciones. ✅
+- Utilizar cachés de algún tipo. ✖️
+
+---
+
+### **Puntos a tener en cuenta 🖋️**
+
+- Las naves se deben guardar en una base de datos. Puede ser, por ejemplo, H2 en memoria. ✅
+- La prueba se debe presentar en un repositorio de Git. ✅
+- Utilizar alguna librería que facilite el mantenimiento de los scripts DDL de base de datos. ✅
+- Test de integración. ✖️
+- Presentar la aplicación dockerizada. ✅
+- Documentación de la API. ✅
+- Seguridad del API. ✅
+- Implementar algún consumer/producer para algún broker (Rabbit, Kafka, etc). ✖️
 ---
 
 ## **Requisitos 👷‍♂️**
