@@ -2,7 +2,7 @@
 
 ![Nave espacial](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWdsM3B2YnhjYmF5ZzU0YWY0cnNhcnd1NGl1dXA1dGUzZzNpN3A3YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/sKeCondWadIiyKR4Hq/giphy.gif)
 
-# Prueba Técnica Backend - W2M**
+# Prueba Técnica Backend - W2M
 
 ## 
 
