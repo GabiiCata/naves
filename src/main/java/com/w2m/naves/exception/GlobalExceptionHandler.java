@@ -2,11 +2,11 @@ package com.w2m.naves.exception;
 
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.w2m.naves.spaceship.infraestructure.exception.SpaceshipNotFoundException;
+import com.w2m.naves.spaceship.infrastructure.exception.SpaceshipNotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -53,14 +53,26 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<ErrorDetails> handleNumberFormatException(UsernameNotFoundException ex, WebRequest request) {
+        log.error(ex.getMessage());
+        ErrorDetails errorDetails = new ErrorDetails(
+                LocalDateTime.now(),
+                HttpStatus.UNAUTHORIZED.value(),
+                "Credenciales incorrectas",
+                request.getDescription(false)
+        );
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleGenericException(Exception ex, WebRequest request) {
-        log.error(ex.getCause().toString());
+        ex.printStackTrace();
         ErrorDetails errorDetails = new ErrorDetails(
                 LocalDateTime.now(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Error en el sistema. " + ex.getMessage(),
+                "Error en el sistema. " + ex.getMessage() + ex.getCause(),
                 request.getDescription(false)
         );
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);

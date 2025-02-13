@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "7ad25962-b851-4f96-8fb8-0808a2556bda",
+		"name": "w2m_prueba_tecnica_backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6712394"
+	},
+	"item": [
+		{
+			"name": "FIND ALL",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzM5NDk2MTMzLCJpYXQiOjE3Mzk0NzgxMzN9.Q-8IXsjNV0ZKbLkTo49JDYIqpO3kQihQly6cWgxctylsrvPFaRncLU-gbDIRal6MDU32Kxy_HZ5S5XE80QiigA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/naves/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"naves",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND NAVE BY ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzM5NDk2MTMzLCJpYXQiOjE3Mzk0NzgxMzN9.Q-8IXsjNV0ZKbLkTo49JDYIqpO3kQihQly6cWgxctylsrvPFaRncLU-gbDIRal6MDU32Kxy_HZ5S5XE80QiigA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/naves/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"naves",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND NAVE BY PAGE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/naves?page=0&size=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"naves"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE NAVE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Stitch\",\r\n  \"origin\": \"PELICULAS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/naves/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"naves",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"user\",\r\n  \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE NAVE",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3Mm0tdXNlciIsImV4cCI6MTczOTUwMTE0MCwiaWF0IjoxNzM5NDgzMTQwfQ.kahgE0Ddbwxoq_-0aOmK8QWUt6jpNvyPh4z95tojNRL1P930E1IJ1o1Q8hrvgBh44HFXuYc1ZFopbMq0Is6f8Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/naves/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"naves",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

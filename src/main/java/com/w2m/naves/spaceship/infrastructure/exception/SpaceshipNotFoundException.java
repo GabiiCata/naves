@@ -1,4 +1,4 @@
-package com.w2m.naves.spaceship.infraestructure.exception;
+package com.w2m.naves.spaceship.infrastructure.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

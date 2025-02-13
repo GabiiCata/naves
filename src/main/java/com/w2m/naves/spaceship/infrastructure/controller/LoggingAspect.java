@@ -1,4 +1,4 @@
-package com.w2m.naves.spaceship.infraestructure.controller;
+package com.w2m.naves.spaceship.infrastructure.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

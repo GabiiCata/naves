@@ -1,9 +1,8 @@
 package com.w2m.naves.spaceship.application;
 
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.w2m.naves.spaceship.domain.EOrigin;
 import com.w2m.naves.spaceship.domain.Spaceship;
-import com.w2m.naves.spaceship.infraestructure.repository.SpaceshipRepository;
+import com.w2m.naves.spaceship.infrastructure.repository.SpaceshipRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;

@@ -1,9 +1,9 @@
-package com.w2m.naves.spaceship.infraestructure.controller;
+package com.w2m.naves.spaceship.infrastructure.controller;
 
 import com.w2m.naves.spaceship.application.SpaceshipDTO;
 import com.w2m.naves.spaceship.application.SpaceshipService;
 import com.w2m.naves.spaceship.domain.EOrigin;
-import com.w2m.naves.spaceship.infraestructure.exception.SpaceshipNotFoundException;
+import com.w2m.naves.spaceship.infrastructure.exception.SpaceshipNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

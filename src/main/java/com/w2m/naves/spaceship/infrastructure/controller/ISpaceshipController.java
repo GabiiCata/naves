@@ -1,4 +1,4 @@
-package com.w2m.naves.spaceship.infraestructure.controller;
+package com.w2m.naves.spaceship.infrastructure.controller;
 
 import com.w2m.naves.spaceship.application.SpaceshipDTO;
 import com.w2m.naves.spaceship.domain.EOrigin;

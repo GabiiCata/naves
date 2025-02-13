@@ -1,4 +1,4 @@
-package com.w2m.naves.spaceship.infraestructure.repository;
+package com.w2m.naves.spaceship.infrastructure.repository;
 
 import com.w2m.naves.spaceship.domain.EOrigin;
 import com.w2m.naves.spaceship.domain.Spaceship;
