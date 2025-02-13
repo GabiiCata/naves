@@ -11,13 +11,14 @@ Este proyecto es una API RESTful desarrollada en **Spring Boot** que permite rea
     - [Alcance del proyecto 📃](#alcance-del-proyecto)
     - [Puntos a tener en cuenta 🖋️](#puntos-a-tener-en-cuenta-)
 2. [Requisitos 👷‍♂️](#requisitos-)
-3. [Correr la app 🚀](#correr-la-app-)
+3. [Entrar a la app](#entrar-a-la-app-)
+4. [Correr la app localmente 🚀](#correr-la-app-localmente-)
     - [Inicia la app en Docker](#inicia-la-app-en-docker-)
     - [Puedes visualizar los endpoints en Swagger](#puedes-visualizar-los-endpoints-en-swagger)
     - [Tienes acceso a H2 Console](#tienes-acceso-a-h2-console)
-4. [Login para usar los endpoints 🔒](#login-para-usar-los-endpoints-)
-5. [PLUS 🍷](#plus-)
-6. [Tecnologías Utilizadas 🛠️](#tecnologías-utilizadas-)
+5. [Login para usar los endpoints 🔒](#login-para-usar-los-endpoints-)
+6. [PLUS 🍷](#plus-)
+7. [Tecnologías Utilizadas 🛠️](#tecnologías-utilizadas-)
 
 
 ## Puntos que se validan para el test 🏆
@@ -61,7 +62,17 @@ Para ejecutar este proyecto, necesitarás lo siguiente:
 
 ---
 
-## **Correr la app 🚀**
+## **Entrar a la app 🫡**
+El proyecto se encuentra desplegado con  : ***https://render.com/***
+
+Si no tiene acceso a estos links seguramente es porque estoy corriendo una version free, y tiene un limite de tiempo para estar inactivo.
+
+> Para probar reemplazar http://localhost:8080 por https://naves.onrender.com como en el ejemplo de abajo:
+>> Swagger: https://naves.onrender.com/swagger-ui/index.html
+> 
+>> H2-Console: https://naves.onrender.com/h2-console
+
+## **Correr la app localmente 🚀**
 
 ### Descarga el repositorio
 ```bash
