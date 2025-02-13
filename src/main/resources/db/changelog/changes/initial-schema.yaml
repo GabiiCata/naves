@@ -1,0 +1,105 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: "Gabriel Espina"
+      changes:
+        - createTable:
+            tableName: spaceship
+            columns:
+              - column:
+                  name: spaceship_id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: origin
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: "Gabriel Espina"
+      changes:
+        - insert:
+            tableName: spaceship
+            columns:
+              - column:
+                  name: name
+                  value: "Stitch's Spaceship"
+              - column:
+                  name: description
+                  value: "Una pequeña y avanzada nave espacial utilizada por Stitch para viajar entre galaxias."
+              - column:
+                  name: origin
+                  value: "PELICULA"
+        - insert:
+            tableName: spaceship
+            columns:
+              - column:
+                  name: name
+                  value: "Axiom Ship"
+              - column:
+                  name: description
+                  value: "Una gigantesca nave de lujo que alberga a los últimos humanos en el universo de WALL-E."
+              - column:
+                  name: origin
+                  value: "PELICULA"
+        - insert:
+            tableName: spaceship
+            columns:
+              - column:
+                  name: name
+                  value: "Star Command Ship"
+              - column:
+                  name: description
+                  value: "La nave insignia de Star Command, utilizada por Buzz Lightyear y su equipo en misiones espaciales."
+              - column:
+                  name: origin
+                  value: "SERIE"
+        - insert:
+            tableName: spaceship
+            columns:
+              - column:
+                  name: name
+                  value: "Nostromo"
+              - column:
+                  name: description
+                  value: "Una nave de carga espacial utilizada por la tripulación en la película de ciencia ficción 'Alien'."
+              - column:
+                  name: origin
+                  value: "PELICULA"
+        - insert:
+            tableName: spaceship
+            columns:
+              - column:
+                  name: name
+                  value: "The Razor Crest"
+              - column:
+                  name: description
+                  value: "La nave de caza de Mandalorian, que sirve de hogar y medio de transporte para Din Djarin y Baby Yoda en la serie de Disney+ 'The Mandalorian'."
+              - column:
+                  name: origin
+                  value: "SERIE"
+        - insert:
+            tableName: spaceship
+            columns:
+              - column:
+                  name: name
+                  value: "Serenity"
+              - column:
+                  name: description
+                  value: "La nave de la tripulación de los 'Firefly', un grupo de renegados y exsoldados que viajan por el espacio en un futuro distópico."
+              - column:
+                  name: origin
+                  value: "SERIE"

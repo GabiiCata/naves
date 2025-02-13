@@ -1,4 +1,4 @@
-package com.w2m.spaceships.spaceship.configuration;
+package com.w2m.naves.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

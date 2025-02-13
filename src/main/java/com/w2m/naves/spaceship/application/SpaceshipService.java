@@ -1,9 +1,8 @@
-package com.w2m.spaceships.spaceship.application;
+package com.w2m.naves.spaceship.application;
 
-import com.w2m.spaceships.spaceship.domain.EOrigin;
-import com.w2m.spaceships.spaceship.domain.Spaceship;
-import com.w2m.spaceships.spaceship.infraestructure.SpaceshipDTO;
-import com.w2m.spaceships.spaceship.infraestructure.SpaceshipRepository;
+import com.w2m.naves.spaceship.domain.EOrigin;
+import com.w2m.naves.spaceship.domain.Spaceship;
+import com.w2m.naves.spaceship.infraestructure.repository.SpaceshipRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor

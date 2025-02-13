@@ -1,4 +1,4 @@
-package com.w2m.spaceships.spaceship.domain;
+package com.w2m.naves.spaceship.domain;
 
 
 import jakarta.persistence.*;

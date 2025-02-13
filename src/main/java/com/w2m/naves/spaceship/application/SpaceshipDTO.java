@@ -1,6 +1,6 @@
-package com.w2m.spaceships.spaceship.infraestructure;
+package com.w2m.naves.spaceship.application;
 
-import com.w2m.spaceships.spaceship.domain.EOrigin;
+import com.w2m.naves.spaceship.domain.EOrigin;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
