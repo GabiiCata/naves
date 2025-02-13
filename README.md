@@ -91,7 +91,9 @@ http://localhost:8080/swagger-ui/index.html
 http://localhost:8080/h2-console
 ```
 
-#### Usuario de prueba para H2 Console
+#### Datos para H2 Console
+> db: jdbc:h2:mem:starshipdb
+
 > user: w2m-user
 
 > password: w2m-password
