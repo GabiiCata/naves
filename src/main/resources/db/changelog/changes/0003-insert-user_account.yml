@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: w2m
+      changes:
+        - insert:
+            tableName: user_account
+            columns:
+              - column:
+                  name: username
+                  value: w2m-user
+              - column:
+                  name: password
+                  value: $2a$10$W7tZI8aTcAKI1ALVy8nOKOA6kvRpNH8RjYo7pnB7cXys8ys.ygUsC # contraseña de 'w2m-password'
