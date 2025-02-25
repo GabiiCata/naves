@@ -3,9 +3,13 @@ package com.w2m.naves.spaceship.application;
 import com.w2m.naves.mq.SpaceShipProducer;
 import com.w2m.naves.spaceship.domain.EOrigin;
 import com.w2m.naves.spaceship.domain.Spaceship;
+import com.w2m.naves.spaceship.infrastructure.exception.SpaceshipNotFoundException;
 import com.w2m.naves.spaceship.infrastructure.repository.SpaceshipRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -22,14 +26,17 @@ public class SpaceshipService {
 
     private final ModelMapper modelMapper;
 
+    @Cacheable(value = "spaceships")
     public Page<SpaceshipDTO> getAllSpaceships(Pageable pageable) {
         return spaceshipRepository.findAll(pageable)
                 .map(spaceship -> modelMapper.map(spaceship, SpaceshipDTO.class));
     }
 
-    public Optional<SpaceshipDTO> getSpaceshipById(Long id) {
+    @Cacheable(value = "spaceships", key = "#id")
+    public SpaceshipDTO getSpaceshipById(Long id) {
         return spaceshipRepository.findById(id)
-                .map(spaceship -> modelMapper.map(spaceship, SpaceshipDTO.class));
+                .map(spaceship -> modelMapper.map(spaceship, SpaceshipDTO.class))
+                .orElseThrow(() -> new SpaceshipNotFoundException(id));
     }
 
 
@@ -51,21 +58,33 @@ public class SpaceshipService {
         return modelMapper.map(spaceshipDb,SpaceshipDTO.class);
     }
 
+    @CachePut(value = "spaceships", key = "#id")
+    @CacheEvict(value = "spaceships", allEntries = true)
     public SpaceshipDTO updateSpaceship(Long id, SpaceshipDTO spaceshipDetails) {
-        return spaceshipRepository.findById(id).map(spaceship -> {
-            if ( spaceshipDetails.getName()!= null)
-                spaceship.setName(spaceshipDetails.getName());
-            if ( spaceshipDetails.getDescription() !=  null )
-                spaceship.setDescription(spaceshipDetails.getDescription());
-            if (spaceshipDetails.getOrigin() != null)
-                spaceship.setOrigin(spaceshipDetails.getOrigin());
-            Spaceship updatedSpaceship = spaceshipRepository.saveAndFlush(spaceship);
-            spaceShipProducer.sendSpaceShipMessage( "nave "+updatedSpaceship.getSpaceshipId()+" actualizada" );
-            return modelMapper.map(updatedSpaceship, SpaceshipDTO.class);
-        }).orElseThrow(() -> new RuntimeException("Nave no encontrada con ID: " + id));
+        Optional<Spaceship> spaceshipOptional = spaceshipRepository.findById(id);
+        if (spaceshipOptional.isEmpty())
+            throw new SpaceshipNotFoundException(id);
+
+        Spaceship spaceship = spaceshipOptional.get();
+
+        if (spaceshipDetails.getName() != null)
+            spaceship.setName(spaceshipDetails.getName());
+
+        if (spaceshipDetails.getDescription() != null)
+            spaceship.setDescription(spaceshipDetails.getDescription());
+
+        if (spaceshipDetails.getOrigin() != null)
+            spaceship.setOrigin(spaceshipDetails.getOrigin());
+
+        Spaceship updatedSpaceship = spaceshipRepository.save(spaceship);
+
+        spaceShipProducer.sendSpaceShipMessage("nave " + updatedSpaceship.getSpaceshipId() + " actualizada");
+
+        return modelMapper.map(updatedSpaceship, SpaceshipDTO.class);
     }
 
 
+    @CacheEvict(value = "spaceships", key = "#id")
     public void deleteSpaceship(Long id) {
         spaceshipRepository.deleteById(id);
         spaceShipProducer.sendSpaceShipMessage( "nave "+id+" eliminada" );
