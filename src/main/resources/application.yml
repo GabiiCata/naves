@@ -29,3 +29,11 @@ logging:
     com.w2m.spaceships.aspect: WARN
 main:
   allow-circular-references: true
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  queue: spaceShipQueue
+  exchange: spaceShipExchange
+  routingkey: spaceShipRoutingKey

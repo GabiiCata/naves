@@ -1,5 +1,6 @@
 package com.w2m.naves.spaceship.application;
 
+import com.w2m.naves.mq.SpaceShipProducer;
 import com.w2m.naves.spaceship.domain.EOrigin;
 import com.w2m.naves.spaceship.domain.Spaceship;
 import com.w2m.naves.spaceship.infrastructure.repository.SpaceshipRepository;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class SpaceshipService {
 
     private final SpaceshipRepository spaceshipRepository;
+    private final SpaceShipProducer spaceShipProducer;
+
     private final ModelMapper modelMapper;
 
     public Page<SpaceshipDTO> getAllSpaceships(Pageable pageable) {
@@ -44,6 +47,7 @@ public class SpaceshipService {
 
     public SpaceshipDTO createSpaceship(SpaceshipDTO spaceship) {
         Spaceship spaceshipDb =  spaceshipRepository.save(modelMapper.map(spaceship,Spaceship.class));
+        spaceShipProducer.sendSpaceShipMessage( "nave "+spaceshipDb.getSpaceshipId()+" creada" );
         return modelMapper.map(spaceshipDb,SpaceshipDTO.class);
     }
 
@@ -56,6 +60,7 @@ public class SpaceshipService {
             if (spaceshipDetails.getOrigin() != null)
                 spaceship.setOrigin(spaceshipDetails.getOrigin());
             Spaceship updatedSpaceship = spaceshipRepository.saveAndFlush(spaceship);
+            spaceShipProducer.sendSpaceShipMessage( "nave "+updatedSpaceship.getSpaceshipId()+" actualizada" );
             return modelMapper.map(updatedSpaceship, SpaceshipDTO.class);
         }).orElseThrow(() -> new RuntimeException("Nave no encontrada con ID: " + id));
     }
@@ -63,6 +68,7 @@ public class SpaceshipService {
 
     public void deleteSpaceship(Long id) {
         spaceshipRepository.deleteById(id);
+        spaceShipProducer.sendSpaceShipMessage( "nave "+id+" eliminada" );
     }
 
 }
