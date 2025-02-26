@@ -15,6 +15,8 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
     enabled: true
+  cache:
+    type: simple
 springdoc:
   api-docs:
     title: API de Naves Espaciales
@@ -29,3 +31,17 @@ logging:
     com.w2m.spaceships.aspect: WARN
 main:
   allow-circular-references: true
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  queue: spaceShipQueue
+  exchange: spaceShipExchange
+  routingkey: spaceShipRoutingKey
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics"
