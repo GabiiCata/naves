@@ -6,6 +6,8 @@ import com.w2m.naves.spaceship.domain.Spaceship;
 import com.w2m.naves.spaceship.infrastructure.exception.SpaceshipNotFoundException;
 import com.w2m.naves.spaceship.infrastructure.repository.SpaceshipRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -41,6 +43,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Obtener todas las naves espaciales")
     void testGetAllSpaceships() {
         // Precondiciones
         Pageable pageable = mock(Pageable.class);
@@ -66,6 +70,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Obtener nave espacial por ID (éxito)")
     void testGetSpaceshipById_Success() {
         // Precondiciones
         Long id = 1L;
@@ -89,6 +95,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Obtener nave espacial por ID (no encontrada)")
     void testGetSpaceshipById_NotFound() {
         // Precondiciones
         Long id = 1L;
@@ -103,6 +111,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Buscar naves espaciales por nombre")
     void testSearchSpaceshipsByName() {
         // Precondiciones
         String name = "Falcon";
@@ -129,6 +139,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Buscar naves espaciales por origen")
     void testGetSpaceshipsByOrigin() {
         // Precondiciones
         EOrigin origin = EOrigin.PELICULA;
@@ -153,6 +165,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Crean nueva nave")
     void testCreateSpaceship() {
         // Precondiciones
         SpaceshipDTO spaceshipDTO = new SpaceshipDTO();
@@ -176,6 +190,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Actualizar una nave")
     void testUpdateSpaceship_Success() {
         // Precondiciones
         Long id = 1L;
@@ -203,6 +219,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Actualizar una nave (no encontrada)")
     void testUpdateSpaceship_NotFound() {
         // Precondiciones
         Long id = 1L;
@@ -220,6 +238,8 @@ class SpaceshipServiceTest {
     }
 
     @Test
+    @Tag("unit")
+    @DisplayName("Test: Eliminar una nave")
     void testDeleteSpaceship() {
         // Precondiciones
         Long id = 1L;
