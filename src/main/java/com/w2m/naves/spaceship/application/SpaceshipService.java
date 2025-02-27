@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,14 +42,18 @@ public class SpaceshipService {
 
 
     public List<SpaceshipDTO> searchSpaceshipsByName(String name) {
-        return spaceshipRepository.findByNameContaining(name).stream()
+        return spaceshipRepository.findByNameContainingIgnoreCase(name)
+                .orElse(Collections.emptyList())
+                .stream()
                 .map(spaceship -> modelMapper.map(spaceship, SpaceshipDTO.class))
                 .toList();
     }
 
 
     public List<SpaceshipDTO> getSpaceshipsByOrigin(EOrigin origin) {
-        return spaceshipRepository.findByOrigin(origin).stream()
+        return spaceshipRepository.findByOrigin(origin)
+                .orElse(Collections.emptyList())
+                .stream()
                 .map(spaceship -> modelMapper.map(spaceship, SpaceshipDTO.class)).toList();
     }
 

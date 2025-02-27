@@ -5,6 +5,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 public class SpaceshipNotFoundException extends ResponseStatusException {
     public SpaceshipNotFoundException(Long id) {
-        super(HttpStatus.NOT_FOUND, "Nave no encontrada con ID: " + id);
+        super(HttpStatus.NOT_FOUND, "Spaceship with ID "+id+" not found");
     }
 }
